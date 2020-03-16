@@ -17,7 +17,7 @@ SendMode Input
 
 ;APP基础信息
 global APP_NAME    := "自动生成InstallFile.ahk文件"    ;名称
-global APP_VERSION := 1.0          ;版本
+global APP_VERSION := 1.1          ;版本
 SetWorkingDir %A_ScriptDir%        ;工作目录设置为当前
 
 ;库:ini保存类
@@ -40,16 +40,16 @@ Gui, Color,, 0xCCE8CF   ;护眼绿色
 极光灰    #EAEAEF  
 */
 
-Gui, Add, GroupBox, w500 h50, 文件夹路径(拖入文件)
-Gui, Add, Edit, xp+10 yp+20 w480 h22 vvTargetPath ReadOnly,
+Gui, Add, GroupBox, w600 h50, 文件夹路径(拖入文件)
+Gui, Add, Edit, xp+10 yp+20 w580 h22 vini_GUI_ED0 ReadOnly, % INI.Init("GUI", "ED0", "")
 
-Gui, Add, GroupBox, xm y+10 w500 h80, 参数设定
+Gui, Add, GroupBox, xm y+10 w600 h80, 参数设定
 Gui, Add, text, xp+10 yp+22 w60 h22 Section, 函数名称:
-Gui, Add, Edit, x+0 yp-2 w420 hp vini_GUI_ED1, % INI.Init("GUI", "ED1", "FileInstallTo")
+Gui, Add, Edit, x+0 yp-2 w520 hp vini_GUI_ED1, % INI.Init("GUI", "ED1", "FileInstallTo")
 Gui, Add, text, xs y+7 w60 h22, 文件名称:
-Gui, Add, Edit, x+0 yp-2 w420 hp vini_GUI_ED2, % INI.Init("GUI", "ED2", "_InstallFile.ahk")
+Gui, Add, Edit, x+0 yp-2 w520 hp vini_GUI_ED2, % INI.Init("GUI", "ED2", "_InstallFile.ahk")
 
-Gui, Add, Button, xm y+20 w500 h35 ggBT, 生成文件到本地
+Gui, Add, Button, xm y+20 w600 h35 ggBT, 生成文件到本地
 
 Gui, Add, StatusBar
 Gui, Show,, % APP_NAME " v" APP_VERSION
@@ -89,7 +89,7 @@ return
 
 ;拖入文件夹
 GuiDropFiles:
-	GuiControl,, vTargetPath, % A_GuiEvent
+	GuiControl,, ini_GUI_ED0, % A_GuiEvent
 return
 
 ;改变GUI尺寸时调整控件
