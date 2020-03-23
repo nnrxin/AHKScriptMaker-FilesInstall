@@ -61,7 +61,7 @@ return    ;自动运行段结束################################################
 ;生成按键
 gBT:
 	Gui, Submit, NoHide
-	if InStr(FileExist(vTargetPath),"D") and ini_GUI_ED1 and ini_GUI_ED2
+	if InStr(FileExist(ini_GUI_ED0),"D") and ini_GUI_ED1 and ini_GUI_ED2
 	{
 		if FileExist(A_ScriptDir "\" ini_GUI_ED2)
 		{
@@ -76,7 +76,7 @@ gBT:
 				return
 			}
 		}
-		txt := CreateFileInstall(vTargetPath, ini_GUI_ED1)
+		txt := CreateFileInstall(ini_GUI_ED0, ini_GUI_ED1)
 		FileDelete, % A_ScriptDir "\" ini_GUI_ED2
 		FileAppend , % txt, % A_ScriptDir "\" ini_GUI_ED2, UTF-8
 		SB_SetText("文件" ini_GUI_ED2 "已经生成")
